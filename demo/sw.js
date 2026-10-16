@@ -1,0 +1,6 @@
+const PREFIX='ytek-work:'+self.registration.scope+':';const CACHE=PREFIX+'08cf31fd5294dca3';
+const FILES=["assets/app-icon-1024.png","assets/app-icon-192.png","assets/app-icon-512.png","assets/subaru-outback.png","assets/vehicles-realistic.png","assets/ytek-original.png","dashboard.html","index.html","manifest.webmanifest","mobile.html","platform.js","shared/accounts.js","shared/appearance.js","shared/i18n.js","shared/schools.js","shared/translations.js","styles/appearance.css","styles/dashboard.css","styles/logo.css","styles/mobile.css","styles/responsive.css","styles/shell.css","styles/vehicle-photos.css","ui/dashboard.js","ui/mobile.js"].map(p=>new URL(p,self.registration.scope).href);
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES))));
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith(PREFIX)&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);u.search='';if(u.href===self.registration.scope)u.pathname+='index.html';if(!FILES.includes(u.href))return;
+e.respondWith(caches.open(CACHE).then(async c=>{const hit=await c.match(u.href);return hit||fetch(e.request)}));});

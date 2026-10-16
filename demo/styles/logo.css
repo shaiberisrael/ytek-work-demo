@@ -1,0 +1,13 @@
+/* Frame the visible original artwork (approximately x16,y145 to x496,y369)
+   instead of its transparent square canvas. Both themes use the same source. */
+.brand .brand-mark,.logo .brand-mark{display:block;position:relative;flex:none;width:124px;height:58px;overflow:hidden;border:0;padding:0;background:transparent;border-radius:0}
+.logo .brand-mark{width:94px;height:44px;margin:0}
+.brand .brand-mark img,.logo .brand-mark img,body[data-theme=dark] .brand .brand-mark img,body[data-theme=dark] .logo .brand-mark img{position:absolute;display:block;width:106.667%;max-width:none;height:auto;left:-3.333%;top:-64.732%;object-fit:initial;background:transparent;border-radius:0}
+body[data-theme=dark] .brand .brand-mark img,body[data-theme=dark] .logo .brand-mark img{filter:brightness(0) invert(1)}
+body[data-theme=dark] .logo>span:not(.brand-mark),body[data-theme=dark] .brand b{color:#e4efff;border-color:#516278}
+@media(max-width:650px){.brand .brand-mark{width:94px;height:44px}}
+.brand .brand-mark::after,.logo .brand-mark::after{content:'W';position:absolute;left:27.3%;top:83.5%;transform:translate(-50%,-50%);color:#fff;font-family:Arial,sans-serif;font-size:8.1px;font-weight:800;line-height:1;letter-spacing:0;pointer-events:none}
+.logo .brand-mark::after{font-size:6.3px}
+body[data-theme=dark] .brand .brand-mark::after,body[data-theme=dark] .logo .brand-mark::after{color:#101a27}
+.brand>b,.logo>span:not(.brand-mark){display:none}
+@media(max-width:650px){.brand .brand-mark::after{font-size:6.3px}}
